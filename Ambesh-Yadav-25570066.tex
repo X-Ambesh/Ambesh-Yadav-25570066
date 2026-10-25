@@ -1,0 +1,148 @@
+\documentclass[12pt,a4paper]{article}
+\usepackage[top=2cm,bottom=2cm,left=2.5cm,right=2cm]{geometry}
+\usepackage{amsmath,amssymb,array}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+
+\pagestyle{empty}
+\setlength{\parindent}{0pt}
+
+\newcommand{\bn}[1]{\texttt{#1}}
+\newcommand{\ones}[1]{\hspace{1.5cm}\small #1 ones}
+\newcommand{\lab}[1]{\rule[0.5ex]{1.8cm}{0.4pt}\ (#1)}
+
+\begin{document}
+
+\renewcommand{\arraystretch}{2.2}
+\begin{tabular}{|c|c|c|c|c|c|c|c|}
+\hline
+\small Initial sum & \bn{0001} & \bn{0010} & \bn{0011} & \bn{1010} & \bn{1100} & \bn{1011} & \bn{1110} \\ \hline
+\bn{00-1} & X &   & X &   &   &   &   \\ \hline
+\bn{11-0} &   &   &   &   & X &   & X \\ \hline
+\bn{1-10} &   &   &   & X &   &   & X \\ \hline
+\bn{-01-} &   & X & X & X &   & X &   \\ \hline
+\end{tabular}
+
+\bigskip
+\renewcommand{\arraystretch}{1}
+\hspace{1cm}\bn{1-10} is superflous prime implicant and can be left.
+
+\medskip
+\hspace{1cm}$p \sim x'y + wxz' + w'x'z$
+
+\hspace{1cm}is the required minimal form of $p$
+
+\bigskip\bigskip
+10/23
+
+\underline{Ques.}\hspace{1cm}Determine the minimal form of the polynomial $p$,
+
+\hspace{2.7cm}which is given in DN-form.
+
+\bigskip
+\hspace{1cm}$\begin{array}{@{}l@{}}
+p = v'w'x'y'z' + v'w'x'yz' + v'w'xy'z' + v'w'xyz' \\[3pt]
+\quad + v'wx'y'z + v'wx'yz' + v'wxy'z + v'wxyz' \\[3pt]
+\quad + v'wxyz + vw'x'y'z' + vw'x'y'z + vw'xy'z \\[3pt]
+\quad + vwx'yz' + vwxy'z' + vwxyz' + vwxyz
+\end{array}$
+
+\bigskip
+\renewcommand{\arraystretch}{1.6}
+\hspace{1cm}\begin{tabular}{r@{\ =\ \ }l l}
+$v'w'x'y'z'$ & \bn{00000} & \ones{0} \\
+$v'w'x'yz'$  & \bn{00010} & \ones{1} \\
+$v'w'xy'z'$  & \bn{00100} & \ones{1} \\
+$v'w'xyz'$   & \bn{00110} & \ones{2} \\
+$v'wx'y'z$   & \bn{01001} & \ones{2} \\
+$v'wx'yz'$   & \bn{01010} & \ones{2} \\
+$v'wxy'z$    & \bn{01101} & \ones{3} \\
+$v'wxyz'$    & \bn{01110} & \ones{3} \\
+$v'wxyz$     & \bn{01111} & \ones{4} \\
+$vw'x'y'z'$  & \bn{10000} & \ones{1} \\
+\end{tabular}
+
+\newpage
+\renewcommand{\arraystretch}{1.6}
+\hspace{1cm}\begin{tabular}{r@{\ =\ \ }l l}
+$vw'x'y'z$ & \bn{10001} & \ones{2} \\
+$vw'xy'z$  & \bn{10101} & \ones{3} \\
+$vwx'yz'$  & \bn{11010} & \ones{3} \\
+$vwxy'z'$  & \bn{11100} & \ones{3} \\
+$vwxyz'$   & \bn{11110} & \ones{4} \\
+$vwxyz$    & \bn{11111} & \ones{5} \\
+\end{tabular}
+
+\bigskip
+\renewcommand{\arraystretch}{1.5}
+\hspace{3cm}\begin{tabular}{@{}l@{\hspace{2cm}}l@{}}
+\bn{00000} & (1)  \\ \cline{1-1}
+\bn{00010} & (2)  \\
+\bn{00100} & (3)  \\
+\bn{10000} & (4)  \\ \cline{1-1}
+\bn{00110} & (5)  \\
+\bn{01001} & (6)  \\
+\bn{01010} & (7)  \\
+\bn{10001} & (8)  \\ \cline{1-1}
+\bn{01101} & (9)  \\
+\bn{01110} & (10) \\
+\bn{10101} & (11) \\
+\bn{11010} & (12) \\
+\bn{11100} & (13) \\ \cline{1-1}
+\bn{01111} & (14) \\
+\bn{11110} & (15) \\ \cline{1-1}
+\bn{11111} & (16) \\
+\end{tabular}
+
+\bigskip
+\hspace{3cm}\begin{tabular}{@{}l@{\hspace{1.5cm}}l@{\hspace{1cm}}l@{}}
+\bn{000-0} & (1)(2) & \\
+\bn{00-00} & (1)(3) & \\
+\bn{-0000} & (1)(4) & \lab{A} \\ \cline{1-1}
+\bn{00-10} & (2)(5) & \\
+\bn{0-010} & (2)(7) & \\
+\bn{1000-} & (4)(8) & \lab{B} \\
+\bn{001-0} & (3)(5) & \\ \cline{1-1}
+\end{tabular}
+
+\newpage
+\renewcommand{\arraystretch}{1.5}
+\hspace{3cm}\begin{tabular}{@{}l@{\hspace{1.5cm}}l@{\hspace{1cm}}l@{}}
+\bn{0-110} & (5)(10)  & \\
+\bn{10-01} & (8)(11)  & \lab{C} \\
+\bn{01-01} & (6)(9)   & \lab{D} \\
+\bn{01-10} & (7)(10)  & \\
+\bn{-1010} & (7)(12)  & \\ \cline{1-1}
+\bn{011-1} & (9)(14)  & \lab{E} \\
+\bn{-1110} & (10)(15) & \\
+\bn{111-0} & (13)(15) & \lab{F} \\
+\bn{0111-} & (10)(14) & \\
+\bn{11-10} & (12)(15) & \\ \cline{1-1}
+\bn{-1111} & (14)(16) & \\
+\bn{1111-} & (15)(16) & \\
+\end{tabular}
+
+\bigskip\bigskip
+\hspace{3cm}\begin{tabular}{@{}l@{\hspace{1.5cm}}l@{}}
+\bn{00--0}  & (1)(3)(2)(5)     \\
+\bn{00--0}  & (1)(2)(3)(5)     \\ \cline{1-1}
+\bn{0--10}  & (2)(5)(7)(10)    \\
+\bn{0--10}  & (2)(5)(7)(10)    \\ \cline{1-1}
+\bn{-1-10}  & (7)(12)(10)(15)  \\
+\bn{-1-10}  & (7)(10)(12)(15)  \\ \cline{1-1}
+\bn{-111-}  & (10)(15)(14)(16) \\
+\bn{-111-}  & (10)(14)(15)(16) \\
+\end{tabular}
+
+\bigskip
+\hspace{1cm}Rewrite the above table by removing duplicates.
+
+\medskip
+\hspace{3cm}\begin{tabular}{@{}l@{\hspace{1.5cm}}l@{\hspace{1cm}}l@{}}
+\bn{00--0}  & (1)(2)(3)(5)     & \lab{G} \\ \cline{1-1}
+\bn{0--10}  & (2)(5)(7)(10)    & \lab{H} \\ \cline{1-1}
+\bn{-1-10}  & (7)(10)(12)(15)  & \lab{I} \\ \cline{1-1}
+\bn{-111-}  & (10)(14)(15)(16) & \lab{J} \\
+\end{tabular}
+
+\end{document}
